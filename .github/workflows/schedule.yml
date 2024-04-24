@@ -2,7 +2,7 @@ name: Scheduled Maintenance
 
 on:
   schedule:
-    - cron: '17 19 * * *'  # Schedule to run daily at 00:14 AM UTC
+      - cron: '*/5 * * * *' 
 
 jobs:
   maintenance:
