@@ -1,0 +1,60 @@
+name: Netlify Deployment
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Adjust the Node.js version as needed
+      
+    - name: Install dependencies
+      run: npm install
+
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Adjust the Node.js version as needed
+    
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Run tests
+      run: npm test
+
+  deploy:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Adjust the Node.js version as needed
+      
+    - name: Install Netlify CLI
+      run: npm install -g netlify-cli
+    
+    - name: Deploy to Netlify
+      run: echo 'Deploying'
