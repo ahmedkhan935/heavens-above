@@ -10,21 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-   - name: Checkout code
-  uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Run maintenance task
+      run: |
+      
+        echo "Running maintenance task..."
+      
+        
+    - name: generate logs
+      run: |
+        
+        echo "Maintenance task completed successfully."
+        echo "This log was generated on $(date)" > logs/$(date +%Y%m%d%H%M%S)-log.txt
+    - name: upload logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: logs
+        path: ./*.txt
 
-- name: Run maintenance task
-  run: |
-    echo "Running maintenance task..."
 
-- name: Generate logs
-  run: |
-    echo "Maintenance task completed successfully."
-    echo "This log was generated on $(date)" > logs/$(date +%Y%m%d%H%M%S)-log.txt
-
-- name: Upload logs
-  uses: actions/upload-artifact@v2
-  with:
-    name: logs
-    path: ./logs/*.txt
       
