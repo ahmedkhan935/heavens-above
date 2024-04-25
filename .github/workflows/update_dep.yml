@@ -1,0 +1,30 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+jobs:
+  update_dep:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - run: npm update
+    - run: npm test
+
+    - name: Merge pull request
+      if: github.actor == 'dependabot[bot]' && github.event.pull_request.user.login == 'dependabot[bot]'
+      uses: pascalgn/automerge-action@v0.13.1
+      with:
+        mergeMethod: squash
+        pullRequestId: ${{ github.event.pull_request.number }}
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
