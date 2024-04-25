@@ -23,6 +23,7 @@ jobs:
       run: |
         
         echo "Maintenance task completed successfully."
+        mkdir -p logs
         echo "This log was generated on $(date)" > logs/$(date +%Y%m%d%H%M%S)-log.txt
     - name: upload logs
       uses: actions/upload-artifact@v2
