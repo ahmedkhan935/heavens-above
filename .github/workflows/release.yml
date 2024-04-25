@@ -15,14 +15,15 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+    
+    - name: Setup git
+      run: |
+        git config user.email "ahmedkhanraza935@gmail.com"
+        git config user.name "ahmedkhan935"
       
     - name: Generate Release Notes
       run: npm run release
       
     - name: Commit Release Notes
-      run: |
-        git config user.email "ahmedkhanraza935@gmail.com"
-        git config user.name "ahmedkhan935"
-        git add release-notes.md
-        git commit -m "Generate release notes for "
-        git push
+      run: |       
+        git push --follow-tags origin main
