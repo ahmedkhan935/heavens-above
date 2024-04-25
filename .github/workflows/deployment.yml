@@ -3,7 +3,8 @@ name: Netlify Deployment
 on:
   push:
     branches:
-      - main  # Adjust branch name as needed
+      - main 
+  worflow_dispatch:
 
 jobs:
   build:

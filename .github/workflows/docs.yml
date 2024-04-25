@@ -3,7 +3,8 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - main  # Adjust the branch name as needed
+      - main
+  worfklow_dispatch:
 
 jobs:
   deploy:

@@ -3,6 +3,7 @@ name: Generate Release Notes
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   generate-release-notes:
