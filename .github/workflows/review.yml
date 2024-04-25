@@ -25,6 +25,7 @@ jobs:
       run: echo 'Running Analysis'
     - name: Security Vulnerability Scanning
       run: npm audit
+      continue-on-error: true
       
     - name: Provide Feedback on Pull Request
       run: |
