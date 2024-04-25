@@ -21,8 +21,8 @@ jobs:
       
     - name: Commit Release Notes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config user.email "ahmedkhanraza935@gmail.com"
+        git config user.name "ahmedkhan935"
         git add release-notes.md
-        git commit -m "Generate release notes for ${GITHUB_REF}"
+        git commit -m "Generate release notes for "
         git push
